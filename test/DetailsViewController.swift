@@ -8,6 +8,7 @@
 
 import UIKit
 import MediaPlayer
+import CoreData
 
 class DetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
     
@@ -16,6 +17,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var tracksTableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     
     var album: Album?
     var tracks = [Track]()
@@ -33,8 +35,13 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         titleLabel.text = self.album?.title
         albumCover.image = UIImage(data: NSData(contentsOfURL: NSURL(string: self.album!.largeImageURL)!)!)
         if self.album != nil {
-            api.lookupAlbum(self.album!.collectionId)
+            api.lookupAlbum(Int(self.album!.collectionId))
         }
+    }
+    
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        AlbumModel.createInManagedObjectContext(managedObjectContext, name: album!.title, price: album!.price, thumbnailImageURL: album!.thumbnailImageURL, largeImageURL: album!.largeImageURL, itemURL: album!.itemURL, artistURL: album!.artistURL, collectionId: Int(album!.collectionId))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

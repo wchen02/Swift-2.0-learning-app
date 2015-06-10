@@ -7,25 +7,49 @@
 //
 
 import Foundation
+import CoreData
 
-struct Album {
-    let title: String
-    let price: String
-    let thumbnailImageURL: String
-    let largeImageURL: String
-    let itemURL: String
-    let artistURL: String
-    let collectionId: Int
+
+class Album: NSManagedObject {
+    
+    @NSManaged var title: String
+    @NSManaged var price: String
+    @NSManaged var thumbnailImageURL: String
+    @NSManaged var largeImageURL: String
+    @NSManaged var itemURL: String
+    @NSManaged var artistURL: String
+    //@NSManaged var collectionId: NSNumber
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
     
     init(name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String, collectionId: Int) {
+        let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let entity = NSEntityDescription.entityForName("Album", inManagedObjectContext: managedObjectContext)!
+        super.init(entity: entity, insertIntoManagedObjectContext: nil)
+        
         self.title = name
         self.price = price
         self.thumbnailImageURL = thumbnailImageURL
         self.largeImageURL = largeImageURL
         self.itemURL = itemURL
         self.artistURL = artistURL
-        self.collectionId = collectionId
+        //self.collectionId = NSNumber(long: collectionId)
     }
+    
+    /*class func createInManagedObjectContext(moc: NSManagedObjectContext, name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String, collectionId: Int) -> Album {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Album", inManagedObjectContext: moc) as! test.Album
+        newItem.title = name
+        newItem.price = price
+        newItem.thumbnailImageURL = thumbnailImageURL
+        newItem.largeImageURL = largeImageURL
+        newItem.itemURL = itemURL
+        newItem.artistURL = artistURL
+        newItem.collectionId = NSNumber(long: collectionId)
+        
+        return newItem
+    }*/
     
     static func albumsWithJSON(results: NSArray) -> [Album] {
         // Create an empty array of Albums to append to from this list
@@ -39,7 +63,7 @@ struct Album {
                 
                 var name = result["trackName"] as? String ?? result["collectionName"] as? String
                 /*if name == nil {
-                    name = result["collectionName"] as? String
+                name = result["collectionName"] as? String
                 }*/
                 
                 // Sometimes price comes in as formattedPrice, sometimes as collectionPrice.. and sometimes it's a float instead of a string. Hooray!
@@ -52,6 +76,8 @@ struct Album {
                         nf.maximumFractionDigits = 2
                         if priceFloat != nil {
                             price = "$\(nf.stringFromNumber(priceFloat!)!)"
+                        } else {
+                            price = "Free"
                         }
                     }
                 }

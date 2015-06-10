@@ -8,20 +8,31 @@
 
 import UIKit
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol, UISearchBarDelegate {
     
     var api : APIController!
     
     @IBOutlet var appsTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var albums = [Album]()
+    //var filteredAlbums = [Album]()
     let kCellIdentifier: String = "SearchResultCell"
     var imageCache = [String:UIImage]()
+    var searchActive : Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         api = APIController(delegate: self)
+        searchBar.delegate = self
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         api.searchItunesFor("Lady Gaga")
     }
@@ -32,13 +43,23 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
-        return albums.count
+        /*if(self.searchActive) {
+            return self.filteredAlbums.count
+        }*/
+        return self.albums.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
         
-        let album = self.albums[indexPath.row]
+        var album: Album
+        /*if(searchActive){
+            album = self.filteredAlbums[indexPath.row]
+        } else {
+            album = self.albums[indexPath.row]
+        }*/
+        album = self.albums[indexPath.row]
+        
         // Get the formatted price string for display in the subtitle
         cell.detailTextLabel?.text = album.price
         // Update the textLabel text to use the title from the Album model
@@ -103,6 +124,32 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             var selectedAlbum = self.albums[albumIndex]
             detailsViewController.album = selectedAlbum
         }
+    }
+    
+    //func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.filterContentForSearchText(searchBar.text)
+        /*if(self.filteredAlbums.count == 0){
+            self.searchActive = false;
+        } else {
+            self.searchActive = true;
+        }*/
+        //self.appsTableView.reloadData()
+    }
+
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        /*self.filteredAlbums = self.albums.filter({( album: Album) -> Bool in
+            let stringMatch = album.title.rangeOfString(searchText)
+            return stringMatch != nil
+        })*/
+        api.searchItunesFor(searchText)
+    }
+    
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        let scope = searchBar.scopeButtonTitles as! [String]
+        api.searchItunesFor(scope[selectedScope])
     }
 }
 

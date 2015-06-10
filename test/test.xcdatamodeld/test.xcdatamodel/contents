@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D131" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Album" syncable="YES">
+    <entity name="Album" representedClassName="test.Album" syncable="YES">
         <attribute name="artistURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="collectionId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="itemURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="largeImageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +10,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Album" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

@@ -11,7 +11,6 @@
 		3B203C8E1B1FC8AB00963D77 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203C8D1B1FC8AB00963D77 /* MenuViewController.swift */; };
 		3B27631F1B27958A00A57DF6 /* SavedAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B27631E1B27958A00A57DF6 /* SavedAlbumsViewController.swift */; };
 		3B2763221B27983B00A57DF6 /* test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B2763201B27983A00A57DF6 /* test.xcdatamodeld */; };
-		3B2763241B27B99900A57DF6 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2763231B27B99900A57DF6 /* AlbumModel.swift */; };
 		3B3DD4C21B05163500AD219C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD4C11B05163500AD219C /* AppDelegate.swift */; };
 		3B3DD4C41B05163500AD219C /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3DD4C31B05163500AD219C /* SearchResultsViewController.swift */; };
 		3B3DD4C71B05163500AD219C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3DD4C51B05163500AD219C /* Main.storyboard */; };
@@ -42,7 +41,6 @@
 		3B203C8D1B1FC8AB00963D77 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3B27631E1B27958A00A57DF6 /* SavedAlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedAlbumsViewController.swift; sourceTree = "<group>"; };
 		3B2763211B27983B00A57DF6 /* test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = test.xcdatamodel; sourceTree = "<group>"; };
-		3B2763231B27B99900A57DF6 /* AlbumModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		3B3DD4BC1B05163500AD219C /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3DD4C01B05163500AD219C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B3DD4C11B05163500AD219C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				3B3DD4C31B05163500AD219C /* SearchResultsViewController.swift */,
 				3B4D1D971B0E9B5000779970 /* DetailsViewController.swift */,
 				3B4D1D951B0E91D700779970 /* Album.swift */,
-				3B2763231B27B99900A57DF6 /* AlbumModel.swift */,
 				3B4D1DCB1B0FE81F00779970 /* Track.swift */,
 				3B3DD4C51B05163500AD219C /* Main.storyboard */,
 				3B2763201B27983A00A57DF6 /* test.xcdatamodeld */,
@@ -255,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3DD4C41B05163500AD219C /* SearchResultsViewController.swift in Sources */,
-				3B2763241B27B99900A57DF6 /* AlbumModel.swift in Sources */,
 				3B3DD4C21B05163500AD219C /* AppDelegate.swift in Sources */,
 				3B4D1D921B0BEE9900779970 /* APIController.swift in Sources */,
 				3B203C8C1B1FC6F500963D77 /* SWRevealViewController.m in Sources */,

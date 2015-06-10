@@ -24,6 +24,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     let kCellIdentifier: String = "TrackCell"
     var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
     var lastPlayIndexPath : NSIndexPath?
+    let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,8 +41,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        AlbumModel.createInManagedObjectContext(managedObjectContext, name: album!.title, price: album!.price, thumbnailImageURL: album!.thumbnailImageURL, largeImageURL: album!.largeImageURL, itemURL: album!.itemURL, artistURL: album!.artistURL, collectionId: Int(album!.collectionId))
+        Album.createInManagedObjectContext(managedObjectContext, name: album!.title, price: album!.price, thumbnailImageURL: album!.thumbnailImageURL, largeImageURL: album!.largeImageURL, itemURL: album!.itemURL, artistURL: album!.artistURL, collectionId: Int(album!.collectionId))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

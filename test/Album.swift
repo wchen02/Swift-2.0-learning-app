@@ -18,7 +18,7 @@ class Album: NSManagedObject {
     @NSManaged var largeImageURL: String
     @NSManaged var itemURL: String
     @NSManaged var artistURL: String
-    //@NSManaged var collectionId: NSNumber
+    @NSManaged var collectionId: NSNumber
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -35,11 +35,11 @@ class Album: NSManagedObject {
         self.largeImageURL = largeImageURL
         self.itemURL = itemURL
         self.artistURL = artistURL
-        //self.collectionId = NSNumber(long: collectionId)
+        self.collectionId = NSNumber(long: collectionId)
     }
     
-    /*class func createInManagedObjectContext(moc: NSManagedObjectContext, name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String, collectionId: Int) -> Album {
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Album", inManagedObjectContext: moc) as! test.Album
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String, collectionId: Int) -> Album {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Album", inManagedObjectContext: moc) as! Album
         newItem.title = name
         newItem.price = price
         newItem.thumbnailImageURL = thumbnailImageURL
@@ -49,7 +49,7 @@ class Album: NSManagedObject {
         newItem.collectionId = NSNumber(long: collectionId)
         
         return newItem
-    }*/
+    }
     
     static func albumsWithJSON(results: NSArray) -> [Album] {
         // Create an empty array of Albums to append to from this list

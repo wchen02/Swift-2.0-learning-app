@@ -17,11 +17,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var albums = [Album]()
-    //var filteredAlbums = [Album]()
+    
     let kCellIdentifier: String = "SearchResultCell"
     var imageCache = [String:UIImage]()
-    var searchActive : Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,22 +41,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section:    Int) -> Int {
-        /*if(self.searchActive) {
-            return self.filteredAlbums.count
-        }*/
         return self.albums.count;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
         
-        var album: Album
-        /*if(searchActive){
-            album = self.filteredAlbums[indexPath.row]
-        } else {
-            album = self.albums[indexPath.row]
-        }*/
-        album = self.albums[indexPath.row]
+        var album: Album = self.albums[indexPath.row]
         
         // Get the formatted price string for display in the subtitle
         cell.detailTextLabel?.text = album.price
@@ -99,7 +88,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 }
             })
         }
-        
         return cell
     }
     
@@ -110,9 +98,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         })
     }
     
-    func didReceiveAPIResults(results: NSArray) {
+    func didReceiveAPIResults(results: AnyObject) {
+        let resultsArray = results as! NSArray
         dispatch_async(dispatch_get_main_queue(), {
-            self.albums = Album.albumsWithJSON(results)
+            self.albums = Album.albumsWithJSON(resultsArray)
             self.appsTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
@@ -129,21 +118,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     //func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.filterContentForSearchText(searchBar.text)
-        /*if(self.filteredAlbums.count == 0){
-            self.searchActive = false;
-        } else {
-            self.searchActive = true;
-        }*/
-        //self.appsTableView.reloadData()
     }
 
     
     func filterContentForSearchText(searchText: String) {
         // Filter the array using the filter method
-        /*self.filteredAlbums = self.albums.filter({( album: Album) -> Bool in
-            let stringMatch = album.title.rangeOfString(searchText)
-            return stringMatch != nil
-        })*/
         api.searchItunesFor(searchText)
     }
     

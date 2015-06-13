@@ -9,7 +9,7 @@
 import Foundation
 
 protocol APIControllerProtocol {
-    func didReceiveAPIResults(results: NSArray)
+    func didReceiveAPIResults(results: AnyObject)
 }
 
 class APIController {
@@ -24,7 +24,6 @@ class APIController {
         let url = NSURL(string: path)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            println("Task completed")
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
@@ -43,6 +42,59 @@ class APIController {
         
         // The task is just an object with all these properties set
         // In order to actually make the web request, we need to "resume"
+        task.resume()
+    }
+    
+    func post(params : Dictionary<String, String>, url : String) {
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        
+        var err: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("Body: \(strData)")
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &err) as? Dictionary<String, AnyObject>
+            
+            var msg = "No message"
+            
+            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+                let data: [String: AnyObject] = ["success": false, "message": "Error"]
+                self.delegate.didReceiveAPIResults(data)
+            } else {
+                // The JSONObjectWithData constructor didn't return an error. But, we should still
+                // check and make sure that json has a value using optional binding.
+                if let parseJSON = json {
+                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    if let success = parseJSON["success"] as? Bool, message = parseJSON["success"] as? String {
+                        println("Succes: \(success)")
+                        self.delegate.didReceiveAPIResults(parseJSON)
+                    } else {
+                        println("Error could not parse JSON")
+                        let data: [String: AnyObject] = ["success": false, "message": "Error"]
+                        self.delegate.didReceiveAPIResults(data)
+                    }
+                }
+                else {
+                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                    let data: [String: AnyObject] = ["success": false, "message": "Error"]
+                    self.delegate.didReceiveAPIResults(data)
+                }
+            }
+        })
+        
         task.resume()
     }
     

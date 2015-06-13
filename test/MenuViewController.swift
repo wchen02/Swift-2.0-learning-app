@@ -14,7 +14,16 @@ class MenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "goto_login") {
+            var prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            prefs.setBool(false, forKey: "IS_LOGGED_IN")
+            prefs.synchronize()
+            
+            //let appDomain = NSBundle.mainBundle().bundleIdentifier
+            //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain!)
+        }
     }
 }

@@ -38,10 +38,14 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         if self.album != nil {
             api.lookupAlbum(Int(self.album!.collectionId))
         }
+        self.updateBookmarkState()
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        Album.createInManagedObjectContext(managedObjectContext, name: album!.title, price: album!.price, thumbnailImageURL: album!.thumbnailImageURL, largeImageURL: album!.largeImageURL, itemURL: album!.itemURL, artistURL: album!.artistURL, collectionId: Int(album!.collectionId))
+        if self.album != nil {
+            album!.save(managedObjectContext)
+        }
+        saveButton.highlighted = true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,11 +97,23 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    func didReceiveAPIResults(results: NSArray) {
+    func didReceiveAPIResults(results: AnyObject) {
+        let resultsArray = results as! NSArray
         dispatch_async(dispatch_get_main_queue(), {
-            self.tracks = Track.tracksWithJSON(results)
+            self.tracks = Track.tracksWithJSON(resultsArray)
             self.tracksTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
+    }
+    
+    func updateBookmarkState() {
+        let fetchRequest = NSFetchRequest(entityName: "Album")
+        let predicate = NSPredicate(format: "collectionId == %i", album!.collectionId)
+        
+        var errorPointer : NSErrorPointer = nil
+        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: errorPointer) as? [Album] {
+            saveButton.highlighted = true
+        }
+
     }
 }

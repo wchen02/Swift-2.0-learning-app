@@ -38,17 +38,30 @@ class Album: NSManagedObject {
         self.collectionId = NSNumber(long: collectionId)
     }
     
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, name: String, price: String, thumbnailImageURL: String, largeImageURL: String, itemURL: String, artistURL: String, collectionId: Int) -> Album {
+    func save(moc: NSManagedObjectContext) {
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("Album", inManagedObjectContext: moc) as! Album
-        newItem.title = name
-        newItem.price = price
-        newItem.thumbnailImageURL = thumbnailImageURL
-        newItem.largeImageURL = largeImageURL
-        newItem.itemURL = itemURL
-        newItem.artistURL = artistURL
-        newItem.collectionId = NSNumber(long: collectionId)
+        newItem.title = self.title
+        newItem.price = self.price
+        newItem.thumbnailImageURL = self.thumbnailImageURL
+        newItem.largeImageURL = self.largeImageURL
+        newItem.itemURL = self.itemURL
+        newItem.artistURL = self.artistURL
+        newItem.collectionId = self.collectionId
         
-        return newItem
+        var error : NSError?
+        if(!moc.save(&error) ) {
+            println(error?.localizedDescription)
+        }
+    }
+    
+    func delete() {
+        let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        managedObjectContext.deleteObject(self)
+        
+        var error : NSError?
+        if(!managedObjectContext.save(&error) ) {
+            println(error?.localizedDescription)
+        }
     }
     
     static func albumsWithJSON(results: NSArray) -> [Album] {

@@ -200,10 +200,8 @@
                                     <rect key="frame" x="132" y="79" width="252" height="30"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-z7-CcJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-z7-CcJ">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="Bookmark_off"/>
-                                <state key="highlighted" image="Bookmark_on"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="362" y="157" width="22" height="22"/>
                                 </variation>
@@ -472,13 +470,13 @@
         <!--Launch Screen View Controller-->
         <scene sceneID="LjG-QF-aIy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pA5-1I-ZSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="NWF-Dg-coi" customClass="LaunchScreenViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jS0-7u-WKT"/>
                         <viewControllerLayoutGuide type="bottom" id="JzQ-hi-Eoa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="de2-Mo-5HA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="Y8K-L1-8pC">
@@ -505,6 +503,7 @@
                         <segue destination="1f2-1F-FRC" kind="presentation" identifier="goto_home" id="QND-nd-KFv"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pA5-1I-ZSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2680.5" y="489"/>
         </scene>
@@ -517,6 +516,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UZl-ga-Owi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="80b-zx-nfx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klT-vf-DAH">
@@ -620,8 +620,6 @@
     </scenes>
     <resources>
         <image name="Blank52" width="52" height="52"/>
-        <image name="Bookmark_off" width="32" height="32"/>
-        <image name="Bookmark_on" width="32" height="32"/>
         <image name="Menu" width="22" height="22"/>
         <image name="launchscreen" width="500" height="750"/>
     </resources>

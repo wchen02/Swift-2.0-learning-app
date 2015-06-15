@@ -97,10 +97,9 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    func didReceiveAPIResults(results: AnyObject) {
-        let resultsArray = results as! NSArray
+    func didReceiveAPIResults(results: NSArray) {
         dispatch_async(dispatch_get_main_queue(), {
-            self.tracks = Track.tracksWithJSON(resultsArray)
+            self.tracks = Track.tracksWithJSON(results)
             self.tracksTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })

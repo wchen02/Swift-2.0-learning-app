@@ -32,33 +32,20 @@ class LoginViewController: UIViewController, APIControllerProtocol {
         if username == "" || password == "" {
             self.showAlert("Sign in Failed!", message: "Please enter Username and Password")
         } else {
-            if username == "Nan" && password == "Luo" {
-                prefs.setObject(username, forKey: "USERNAME")
-                prefs.setBool(true, forKey: "IS_LOGGED_IN")
-                prefs.synchronize()
-                
-                self.performSegueWithIdentifier("goto_home", sender: self)
-            } else {
-                self.showAlert("Sign in Failed!", message: "Username and password combination does not exist.")
-            }
-            //let data: [String: String] = ["username": username, "password": password]
-            //api.post(data, url: "http://localhost.test.com/login.php")
-        }
-    }
-    
-    func didReceiveAPIResults(results: AnyObject) {
-        let resultsDict = results as! Dictionary<String, AnyObject>
-        var username: String = usernameTextField.text
-        print(resultsDict["message"])
-        if let success = resultsDict["success"] as? Bool {
-            prefs.setObject(username, forKey: "USERNAME")
-            prefs.setBool(true, forKey: "IS_LOGGED_IN")
-            prefs.synchronize()
-            
-            self.performSegueWithIdentifier("goto_home", sender: self)
-        } else {
-            if let message = resultsDict["message"] as? String {
-                self.showAlert("Sign in Failed!", message: message)
+            let data: [String: String] = ["username": username, "password": password]
+            api.post(data, url: "http://localhost.test.com/login.php") { (succeeded: Bool, msg: String) -> () in
+                // Move to the UI thread
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if(succeeded) {
+                        self.prefs.setObject(username, forKey: "USERNAME")
+                        self.prefs.setBool(true, forKey: "IS_LOGGED_IN")
+                        self.prefs.synchronize()
+                        
+                        self.performSegueWithIdentifier("goto_home", sender: self)
+                    } else {
+                        self.showAlert("Sign in Failed!", message: msg)
+                    }
+                })
             }
         }
     }

@@ -98,10 +98,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         })
     }
     
-    func didReceiveAPIResults(results: AnyObject) {
-        let resultsArray = results as! NSArray
+    func didReceiveAPIResults(results: NSArray) {
         dispatch_async(dispatch_get_main_queue(), {
-            self.albums = Album.albumsWithJSON(resultsArray)
+            self.albums = Album.albumsWithJSON(results)
             self.appsTableView!.reloadData()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })

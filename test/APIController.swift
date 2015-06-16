@@ -76,9 +76,9 @@ class APIController {
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                    if let success = parseJSON["success"] as? Bool {
+                    if let success = parseJSON["success"] as? Bool, message = parseJSON["message"] as? String {
                         println("Success: \(success)")
-                        postCompleted(succeeded: success, msg: "Logged in.")
+                        postCompleted(succeeded: success, msg: message)
                     }
                     return
                 }

@@ -505,6 +505,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="76" y="313" width="250" height="30"/>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="EbD-dC-QUv" id="O6L-Qa-fh5"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USERNAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GTX-yR-nYz">
                                 <rect key="frame" x="175" y="234" width="250" height="30"/>

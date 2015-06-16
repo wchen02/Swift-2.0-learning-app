@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, APIControllerProtocol {
+class LoginViewController: UIViewController, UITextFieldDelegate, APIControllerProtocol {
     
     var api : APIController!
     @IBOutlet weak var signInButton: UIButton!
@@ -48,6 +48,11 @@ class LoginViewController: UIViewController, APIControllerProtocol {
                 })
             }
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.signInButtonPressed(self)
+        return true
     }
     
     func showAlert(title: String, message: String) {

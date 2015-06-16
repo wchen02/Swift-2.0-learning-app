@@ -27,6 +27,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="0.0" y="64" width="400" height="88"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="800" height="88"/>
+                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HG3-MN-ZzV"/>
                                 </connections>
@@ -546,10 +549,17 @@
                                     <action selector="signInButtonPressed:" destination="EbD-dC-QUv" eventType="touchUpInside" id="3up-vn-vjd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPad Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXa-Nu-O4L">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.63137254901960782" green="0.87450980392156863" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="klT-vf-DAH" secondAttribute="centerX" id="4zG-oq-qks"/>
+                            <constraint firstItem="UZl-ga-Owi" firstAttribute="top" secondItem="KXa-Nu-O4L" secondAttribute="bottom" constant="18" id="8tw-jh-mGU"/>
                             <constraint firstItem="klT-vf-DAH" firstAttribute="leading" secondItem="GTX-yR-nYz" secondAttribute="trailing" constant="-225" id="HsX-bf-X0f"/>
                             <constraint firstItem="zLq-tq-dat" firstAttribute="centerY" secondItem="klT-vf-DAH" secondAttribute="centerY" constant="191" id="LFM-Iz-WUx"/>
                             <constraint firstItem="klT-vf-DAH" firstAttribute="top" secondItem="80b-zx-nfx" secondAttribute="top" constant="112" id="OS3-zA-g7G"/>
@@ -559,8 +569,27 @@
                             <constraint firstItem="u26-XU-4ij" firstAttribute="centerX" secondItem="klT-vf-DAH" secondAttribute="centerX" id="sBl-AN-jeL"/>
                             <constraint firstItem="zLq-tq-dat" firstAttribute="centerX" secondItem="GTX-yR-nYz" secondAttribute="centerX" id="t0H-vL-M1a"/>
                             <constraint firstAttribute="bottom" secondItem="9Dg-UM-sVT" secondAttribute="bottom" constant="47" id="xYS-RV-PMx"/>
+                            <constraint firstAttribute="centerX" secondItem="KXa-Nu-O4L" secondAttribute="centerX" id="xYz-BK-Z4E"/>
                             <constraint firstItem="u26-XU-4ij" firstAttribute="top" secondItem="zLq-tq-dat" secondAttribute="bottom" constant="50" id="y42-51-4ty"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="KXa-Nu-O4L"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="xYz-BK-Z4E"/>
+                                <exclude reference="8tw-jh-mGU"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="KXa-Nu-O4L"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="xYz-BK-Z4E"/>
+                                <include reference="8tw-jh-mGU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="zLq-tq-dat" id="PCZ-W0-gPw"/>
@@ -598,9 +627,9 @@
         <image name="launchscreen" width="500" height="750"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Xu-PL-Yny"/>
-        <segue reference="QND-nd-KFv"/>
+        <segue reference="lTR-rK-U5D"/>
         <segue reference="cuh-Fz-Z2N"/>
+        <segue reference="7Xu-PL-Yny"/>
         <segue reference="u7x-NF-91p"/>
     </inferredMetricsTieBreakers>
 </document>

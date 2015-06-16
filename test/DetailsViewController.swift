@@ -38,14 +38,14 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         if self.album != nil {
             api.lookupAlbum(Int(self.album!.collectionId))
         }
-        self.updateBookmarkState()
+        updateBookmarkState()
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
         if self.album != nil {
             album!.save(managedObjectContext)
         }
-        saveButton.highlighted = true
+        saveButton.enabled = false
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,11 +107,11 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func updateBookmarkState() {
         let fetchRequest = NSFetchRequest(entityName: "Album")
-        let predicate = NSPredicate(format: "collectionId == %i", album!.collectionId)
+        let predicate = NSPredicate(format: "collectionId == %i", Int(album!.collectionId))
+        fetchRequest.predicate = predicate
         
-        var errorPointer : NSErrorPointer = nil
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: errorPointer) as? [Album] {
-            saveButton.highlighted = true
+        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [Album] {
+            saveButton.enabled = fetchResults.count == 0 ? true : false
         }
 
     }

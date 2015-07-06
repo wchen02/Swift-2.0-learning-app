@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         println("Hello World")
+        let notificationTypes:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         return true
     }
 
@@ -109,5 +112,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+
+    // notification
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("My device token is %@", deviceToken)
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Failed to get token, error: %@", error)
+    }
 }
 

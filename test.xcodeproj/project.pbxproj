@@ -24,6 +24,11 @@
 		3B4D1D981B0E9B5000779970 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1D971B0E9B5000779970 /* DetailsViewController.swift */; };
 		3B4D1DCC1B0FE81F00779970 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1DCB1B0FE81F00779970 /* Track.swift */; };
 		3B4D1DCE1B0FF04900779970 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1DCD1B0FF04900779970 /* TrackCell.swift */; };
+		3BECBF421B41D76F00475885 /* TestWebviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */; };
+		3BECBF471B41E57000475885 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 3BECBF461B41E57000475885 /* main.css */; };
+		3BECBF491B42ED6F00475885 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 3BECBF481B42ED6F00475885 /* main.js */; };
+		3BECBF4B1B43050600475885 /* TestCollectionviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */; };
+		3BECBF4D1B4305EB00475885 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,11 @@
 		3B4D1D971B0E9B5000779970 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3B4D1DCB1B0FE81F00779970 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		3B4D1DCD1B0FF04900779970 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "\U0010TrackCell.swift"; sourceTree = "<group>"; };
+		3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWebviewViewController.swift; sourceTree = "<group>"; };
+		3BECBF461B41E57000475885 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
+		3BECBF481B42ED6F00475885 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionviewViewController.swift; sourceTree = "<group>"; };
+		3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,7 @@
 		3B3DD4BE1B05163500AD219C /* test */ = {
 			isa = PBXGroup;
 			children = (
+				3BECBF431B41E48D00475885 /* styles */,
 				3B203C881B1FC6CA00963D77 /* SWRevealViewController */,
 				3B3DD4C11B05163500AD219C /* AppDelegate.swift */,
 				3B3DD4C31B05163500AD219C /* SearchResultsViewController.swift */,
@@ -118,6 +129,9 @@
 				3B4D1D951B0E91D700779970 /* Album.swift */,
 				3B4D1DCB1B0FE81F00779970 /* Track.swift */,
 				3B3DD4C51B05163500AD219C /* Main.storyboard */,
+				3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */,
+				3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */,
+				3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */,
 				3B2763291B2B974600A57DF6 /* LaunchScreenViewController.swift */,
 				3B2763271B2B891600A57DF6 /* LoginViewController.swift */,
 				3B2763201B27983A00A57DF6 /* test.xcdatamodeld */,
@@ -155,6 +169,15 @@
 				3B3DD4D61B05163500AD219C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3BECBF431B41E48D00475885 /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				3BECBF461B41E57000475885 /* main.css */,
+				3BECBF481B42ED6F00475885 /* main.js */,
+			);
+			name = styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BECBF491B42ED6F00475885 /* main.js in Resources */,
 				3B3DD4C71B05163500AD219C /* Main.storyboard in Resources */,
+				3BECBF471B41E57000475885 /* main.css in Resources */,
 				3B3DD4CC1B05163500AD219C /* LaunchScreen.xib in Resources */,
 				3B3DD4C91B05163500AD219C /* Images.xcassets in Resources */,
 			);
@@ -266,10 +291,13 @@
 				3B203C8C1B1FC6F500963D77 /* SWRevealViewController.m in Sources */,
 				3B203C8E1B1FC8AB00963D77 /* MenuViewController.swift in Sources */,
 				3B4D1D961B0E91D700779970 /* Album.swift in Sources */,
+				3BECBF4B1B43050600475885 /* TestCollectionviewViewController.swift in Sources */,
 				3B4D1D981B0E9B5000779970 /* DetailsViewController.swift in Sources */,
 				3B4D1DCE1B0FF04900779970 /* TrackCell.swift in Sources */,
+				3BECBF421B41D76F00475885 /* TestWebviewViewController.swift in Sources */,
 				3B27631F1B27958A00A57DF6 /* SavedAlbumsViewController.swift in Sources */,
 				3B4D1DCC1B0FE81F00779970 /* Track.swift in Sources */,
+				3BECBF4D1B4305EB00475885 /* TestCollectionViewCell.swift in Sources */,
 				3B2763221B27983B00A57DF6 /* test.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +427,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = test/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8adf075c-d809-48e1-a8b8-b7a1ef13b66a";
 				SWIFT_OBJC_BRIDGING_HEADER = "test/test-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -416,10 +444,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = test/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8adf075c-d809-48e1-a8b8-b7a1ef13b66a";
 				SWIFT_OBJC_BRIDGING_HEADER = "test/test-Bridging-Header.h";
 			};
 			name = Release;

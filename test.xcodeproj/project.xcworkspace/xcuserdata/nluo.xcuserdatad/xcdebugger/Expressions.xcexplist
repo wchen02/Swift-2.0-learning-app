@@ -13,5 +13,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "test.TestCollectionviewViewController.collectionView (test.TestCollectionviewViewController)(ObjectiveC.UICollectionView, cellForItemAtIndexPath : ObjectiveC.NSIndexPath) -&gt; ObjectiveC.UICollectionViewCell:TestCollectionviewViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.frame.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

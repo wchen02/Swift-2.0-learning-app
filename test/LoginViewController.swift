@@ -32,11 +32,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIControllerP
         if username == "" || password == "" {
             self.showAlert("Sign in Failed!", message: "Please enter Username and Password")
         } else {
-            let data: [String: String] = ["username": username, "password": password]
-            //bypass the sign in page
+            self.prefs.setObject(username, forKey: "USERNAME")
+            self.prefs.setBool(true, forKey: "IS_LOGGED_IN")
+            self.prefs.synchronize()
+            
             self.performSegueWithIdentifier("goto_home", sender: self)
-            //api.post(data, url: "http://uikk854d01aa.icydragoon.koding.io/login.php") { (succeeded: Bool, msg: String) -> () in
-            /*api.post(data, url: "http://localhost.test.com/login.php") { (succeeded: Bool, msg: String) -> () in
+        }
+        
+        /*{
+            let data: [String: String] = ["username": username, "password": password]
+            api.post(data, url: "http://uikk854d01aa.icydragoon.koding.io/login.php") { (succeeded: Bool, msg: String) -> () in
                 // Move to the UI thread
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if(succeeded) {
@@ -49,8 +54,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIControllerP
                         self.showAlert("Sign in Failed!", message: msg)
                     }
                 })
-            }*/
-        }
+            }
+        }*/
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

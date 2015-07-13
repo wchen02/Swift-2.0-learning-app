@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NWF-Dg-coi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NWF-Dg-coi">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -305,6 +304,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="WiF-YN-q1z" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hKp-xr-EGt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GfI-WI-jW6" style="IBUITableViewCellStyleDefault" id="vIN-s1-0kV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vIN-s1-0kV" id="ExF-wR-HBB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Test Scroll View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GfI-WI-jW6">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="yLQ-C0-5SB" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="rGI-wH-lQQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -829,6 +848,75 @@
             </objects>
             <point key="canvasLocation" x="378" y="2349"/>
         </scene>
+        <!--Test Paged Scroll View Controller-->
+        <scene sceneID="LRa-1A-4LF">
+            <objects>
+                <viewController id="x9Z-O1-rxf" customClass="TestPagedScrollViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PVu-sZ-wJV"/>
+                        <viewControllerLayoutGuide type="bottom" id="aYM-Fn-IOV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hsv-0o-mgH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZAM-Mr-2BE">
+                                <rect key="frame" x="0.0" y="64" width="600" height="488"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="100" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="delegate" destination="x9Z-O1-rxf" id="pEf-8Y-35Y"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pYU-L1-q5f">
+                                <rect key="frame" x="271" y="555" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="pYU-L1-q5f" firstAttribute="top" secondItem="ZAM-Mr-2BE" secondAttribute="bottom" constant="3" id="WVy-n9-Tfg"/>
+                            <constraint firstItem="ZAM-Mr-2BE" firstAttribute="leading" secondItem="hsv-0o-mgH" secondAttribute="leading" id="ZeH-yQ-2hJ"/>
+                            <constraint firstItem="ZAM-Mr-2BE" firstAttribute="top" secondItem="PVu-sZ-wJV" secondAttribute="bottom" id="ahu-KS-etH"/>
+                            <constraint firstItem="aYM-Fn-IOV" firstAttribute="top" secondItem="pYU-L1-q5f" secondAttribute="bottom" constant="8" id="ckl-rg-TLS"/>
+                            <constraint firstAttribute="centerX" secondItem="pYU-L1-q5f" secondAttribute="centerX" constant="9.5" id="oag-zE-DpW"/>
+                            <constraint firstAttribute="trailing" secondItem="ZAM-Mr-2BE" secondAttribute="trailing" id="qc9-dw-z3C"/>
+                        </constraints>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <exclude reference="ZAM-Mr-2BE"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="fts-pV-p0j">
+                        <barButtonItem key="leftBarButtonItem" image="Menu" id="Jbm-xN-gdK"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="Jbm-xN-gdK" id="oVT-ee-z1S"/>
+                        <outlet property="pageControl" destination="pYU-L1-q5f" id="skj-st-TGx"/>
+                        <outlet property="scrollView" destination="ZAM-Mr-2BE" id="1sw-cz-hNc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DPe-vl-933" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="3087"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lON-0a-QKP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yLQ-C0-5SB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AJW-Am-mjC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x9Z-O1-rxf" kind="relationship" relationship="rootViewController" id="SM2-qD-EIc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OsS-6p-ggT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="3082.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Blank52" width="52" height="52"/>
@@ -836,9 +924,9 @@
         <image name="launchscreen" width="500" height="750"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lTR-rK-U5D"/>
-        <segue reference="cuh-Fz-Z2N"/>
         <segue reference="7Xu-PL-Yny"/>
+        <segue reference="QND-nd-KFv"/>
+        <segue reference="ztY-X8-wtI"/>
         <segue reference="iAQ-qx-4QZ"/>
     </inferredMetricsTieBreakers>
 </document>

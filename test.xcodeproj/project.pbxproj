@@ -32,6 +32,7 @@
 		98F1AD061B506D3E0020335F /* TestPagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */; };
 		98FEC62D1B599160005F573F /* TestPagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */; };
 		98FEC62F1B5D7D2C005F573F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FEC62E1B5D7D2C005F573F /* iAd.framework */; };
+		98FEC6311B5EC77C005F573F /* TestPagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FEC6301B5EC77C005F573F /* TestPagedCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedScrollViewController.swift; sourceTree = "<group>"; };
 		98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedTableViewController.swift; sourceTree = "<group>"; };
 		98FEC62E1B5D7D2C005F573F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		98FEC6301B5EC77C005F573F /* TestPagedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				3B3DD4C81B05163500AD219C /* Images.xcassets */,
 				3B3DD4CA1B05163500AD219C /* LaunchScreen.xib */,
 				3B3DD4BF1B05163500AD219C /* Supporting Files */,
+				98FEC6301B5EC77C005F573F /* TestPagedCollectionViewController.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B2763281B2B891600A57DF6 /* LoginViewController.swift in Sources */,
+				98FEC6311B5EC77C005F573F /* TestPagedCollectionViewController.swift in Sources */,
 				3B27632A1B2B974600A57DF6 /* LaunchScreenViewController.swift in Sources */,
 				3B3DD4C41B05163500AD219C /* SearchResultsViewController.swift in Sources */,
 				3B3DD4C21B05163500AD219C /* AppDelegate.swift in Sources */,

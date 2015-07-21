@@ -15,7 +15,6 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
     @IBOutlet weak var pageControl: UIPageControl!
 
     var pageLabels: [[String]] = []
-    var data: [String] = []
     var pageViews: [UITableView?] = []
     
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         }
         
         // 1
-        pageLabels = [["row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3"], ["row a", "row b"], ["WENSHENG", "CHEN"]]
+        pageLabels = [["row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3"], ["row a", "row b"], ["WENSHENG", "CHEN"], ["WENSHENG1", "CHEN"], ["WENSHENG2", "CHEN"], ["WENSHENG3", "CHEN"], ["WENSHENG4", "CHEN"]]
         
         let pageCount = pageLabels.count
         
@@ -44,17 +43,19 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         let screenSize = UIScreen.mainScreen().bounds
         scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageCount),
             height: scrollView.frame.height)
-        
         // 5
         loadVisiblePages()
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         println("rotated")
+        
+        // update content size to current orientation
         let screenSize = UIScreen.mainScreen().bounds
         scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageLabels.count),
-            height: screenSize.height)
+            height: scrollView.frame.height)
         
+        // purge all pages that were created for previous orientation
         for var index = 0; index < pageViews.count; ++index {
             purgePage(index)
         }
@@ -86,7 +87,6 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
             newPageView.frame = frame
             newPageView.delegate = self
             newPageView.dataSource = self
-            data = pageLabels[page]
             scrollView.addSubview(newPageView)
             
             // 4
@@ -135,8 +135,6 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         for var index = lastPage+1; index < pageLabels.count; ++index {
             purgePage(index)
         }
-        
-        //scrollView.bringSubviewToFront(pageViews[page]!)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -145,11 +143,25 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var data: [String] = []
+        for var i = 0; i < pageViews.count; ++i {
+            if (tableView == pageViews[i]) {
+                data = pageLabels[i]
+            }
+        }
         return data.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         println("coming here \(indexPath.row)")
+
+        var data: [String] = []
+        for var i = 0; i < pageViews.count; ++i {
+            if (tableView == pageViews[i]) {
+                data = pageLabels[i]
+            }
+        }
+
         let cell: UITableViewCell = UITableViewCell()
         cell.detailTextLabel?.text = data[indexPath.row]
         cell.textLabel?.text = data[indexPath.row]

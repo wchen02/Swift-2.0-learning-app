@@ -46,7 +46,7 @@ class TestPagedScrollViewController: UIViewController, UIScrollViewDelegate {
         // 4
         let screenSize = UIScreen.mainScreen().bounds.size
         scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageImages.count),
-            height: screenSize.height)
+            height: scrollView.frame.height)
         
         // 5
         loadVisiblePages()

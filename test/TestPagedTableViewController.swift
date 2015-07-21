@@ -27,7 +27,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         }
         
         // 1
-        pageLabels = [["row 1", "row 2", "row 3"], ["row a", "row b"], ["WENSHENG", "CHEN"]]
+        pageLabels = [["row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3", "row 1", "row 2", "row 3"], ["row a", "row b"], ["WENSHENG", "CHEN"]]
         
         let pageCount = pageLabels.count
         
@@ -43,7 +43,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         // 4
         let screenSize = UIScreen.mainScreen().bounds
         scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageCount),
-            height: screenSize.height)
+            height: scrollView.frame.height)
         
         // 5
         loadVisiblePages()
@@ -112,6 +112,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         // First, determine which page is currently visible
         let screenWidth = UIScreen.mainScreen().bounds.width
         let page = Int(floor((scrollView.contentOffset.x * 2.0 + screenWidth) / (screenWidth * 2.0)))
+        
         println ("Current page \(page)")
         // Update the page control
         pageControl.currentPage = page
@@ -135,7 +136,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
             purgePage(index)
         }
         
-        scrollView.bringSubviewToFront(pageViews[page]!)
+        //scrollView.bringSubviewToFront(pageViews[page]!)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -148,6 +149,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        println("coming here \(indexPath.row)")
         let cell: UITableViewCell = UITableViewCell()
         cell.detailTextLabel?.text = data[indexPath.row]
         cell.textLabel?.text = data[indexPath.row]

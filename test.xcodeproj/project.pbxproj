@@ -30,6 +30,8 @@
 		3BECBF4B1B43050600475885 /* TestCollectionviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */; };
 		3BECBF4D1B4305EB00475885 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */; };
 		98F1AD061B506D3E0020335F /* TestPagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */; };
+		98FEC62D1B599160005F573F /* TestPagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */; };
+		98FEC62F1B5D7D2C005F573F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FEC62E1B5D7D2C005F573F /* iAd.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionviewViewController.swift; sourceTree = "<group>"; };
 		3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedScrollViewController.swift; sourceTree = "<group>"; };
+		98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedTableViewController.swift; sourceTree = "<group>"; };
+		98FEC62E1B5D7D2C005F573F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FEC62F1B5D7D2C005F573F /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +110,7 @@
 		3B3DD4B31B05163500AD219C = {
 			isa = PBXGroup;
 			children = (
+				98FEC62E1B5D7D2C005F573F /* iAd.framework */,
 				3B3DD4BE1B05163500AD219C /* test */,
 				3B3DD4D41B05163500AD219C /* testTests */,
 				3B3DD4BD1B05163500AD219C /* Products */,
@@ -133,6 +139,7 @@
 				3B3DD4C51B05163500AD219C /* Main.storyboard */,
 				3BECBF4A1B43050600475885 /* TestCollectionviewViewController.swift */,
 				98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */,
+				98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */,
 				3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */,
 				3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */,
 				3B2763291B2B974600A57DF6 /* LaunchScreenViewController.swift */,
@@ -293,6 +300,7 @@
 				3B4D1D921B0BEE9900779970 /* APIController.swift in Sources */,
 				3B203C8C1B1FC6F500963D77 /* SWRevealViewController.m in Sources */,
 				3B203C8E1B1FC8AB00963D77 /* MenuViewController.swift in Sources */,
+				98FEC62D1B599160005F573F /* TestPagedTableViewController.swift in Sources */,
 				3B4D1D961B0E91D700779970 /* Album.swift in Sources */,
 				3BECBF4B1B43050600475885 /* TestCollectionviewViewController.swift in Sources */,
 				98F1AD061B506D3E0020335F /* TestPagedScrollViewController.swift in Sources */,

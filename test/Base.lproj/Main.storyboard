@@ -326,6 +326,26 @@
                                             <segue destination="yLQ-C0-5SB" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="rGI-wH-lQQ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="FE7-wV-ONt" style="IBUITableViewCellStyleDefault" id="0d3-nG-agy">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0d3-nG-agy" id="Qhd-0Z-tvv">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Test Scroll Table View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FE7-wV-ONt">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Qrc-bd-xqT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="n1A-rb-bhU"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Account" id="CbL-vF-vjn">
@@ -498,7 +518,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8og-jD-cZd">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8og-jD-cZd">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lmI-sq-IzS">
@@ -575,6 +595,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Menu" id="5cr-pW-GJO"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="8og-jD-cZd" id="Fie-AU-8wT"/>
                         <outlet property="menuButton" destination="5cr-pW-GJO" id="os8-kp-Lwb"/>
                     </connections>
                 </viewController>
@@ -899,6 +920,53 @@
             </objects>
             <point key="canvasLocation" x="1074" y="3087"/>
         </scene>
+        <!--Test Paged Table View Controller-->
+        <scene sceneID="Jh1-XF-LoF">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5bG-ck-1hk" customClass="TestPagedTableViewController" customModule="test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tuc-QP-jLt"/>
+                        <viewControllerLayoutGuide type="bottom" id="x2R-Cl-GgT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gBW-Q3-hwm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FId-sG-xIx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="500"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5bG-ck-1hk" id="QRg-q2-dV8"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1CS-Kk-a25">
+                                <rect key="frame" x="281" y="563" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="1CS-Kk-a25" firstAttribute="top" secondItem="FId-sG-xIx" secondAttribute="bottom" constant="-1" id="5HT-uW-0gm"/>
+                            <constraint firstAttribute="trailing" secondItem="FId-sG-xIx" secondAttribute="trailing" id="A5C-Vk-wRq"/>
+                            <constraint firstItem="FId-sG-xIx" firstAttribute="top" secondItem="Tuc-QP-jLt" secondAttribute="bottom" id="DW2-sl-HKW"/>
+                            <constraint firstItem="FId-sG-xIx" firstAttribute="leading" secondItem="gBW-Q3-hwm" secondAttribute="leading" id="DsQ-zA-bYb"/>
+                            <constraint firstItem="FId-sG-xIx" firstAttribute="centerX" secondItem="1CS-Kk-a25" secondAttribute="centerX" constant="-0.5" id="HYr-C3-gdz"/>
+                            <constraint firstItem="x2R-Cl-GgT" firstAttribute="top" secondItem="1CS-Kk-a25" secondAttribute="bottom" id="ipf-p0-dfz"/>
+                            <constraint firstItem="FId-sG-xIx" firstAttribute="top" secondItem="Tuc-QP-jLt" secondAttribute="bottom" id="v6S-F8-tn0"/>
+                            <constraint firstAttribute="centerX" secondItem="FId-sG-xIx" secondAttribute="centerX" id="wwP-hF-5RJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="u4F-g6-3p2">
+                        <barButtonItem key="leftBarButtonItem" image="Menu" id="Zss-Do-VdO"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="Zss-Do-VdO" id="ERT-Vf-Ghg"/>
+                        <outlet property="pageControl" destination="1CS-Kk-a25" id="kFV-id-NZG"/>
+                        <outlet property="scrollView" destination="FId-sG-xIx" id="8IM-k7-KPo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3B9-N1-pCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="3833"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lON-0a-QKP">
             <objects>
@@ -917,6 +985,24 @@
             </objects>
             <point key="canvasLocation" x="378" y="3082.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qLM-Ra-j0J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qrc-bd-xqT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZGl-oX-uI5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5bG-ck-1hk" kind="relationship" relationship="rootViewController" id="J2f-Yf-3Ty"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZI-i1-xpb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="3833"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Blank52" width="52" height="52"/>
@@ -924,9 +1010,9 @@
         <image name="launchscreen" width="500" height="750"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Xu-PL-Yny"/>
         <segue reference="QND-nd-KFv"/>
-        <segue reference="ztY-X8-wtI"/>
-        <segue reference="iAQ-qx-4QZ"/>
+        <segue reference="cuh-Fz-Z2N"/>
+        <segue reference="7Xu-PL-Yny"/>
+        <segue reference="u7x-NF-91p"/>
     </inferredMetricsTieBreakers>
 </document>

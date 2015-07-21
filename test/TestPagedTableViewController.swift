@@ -16,6 +16,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
 
     var pageLabels: [[String]] = []
     var pageViews: [UITableView?] = []
+    var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         let pageCount = pageLabels.count
         
         // 2
-        pageControl.currentPage = 0
+        pageControl.currentPage = currentPage
         pageControl.numberOfPages = pageCount
         
         // 3
@@ -45,6 +46,11 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
             height: scrollView.frame.height)
         // 5
         loadVisiblePages()
+    }
+    
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        let screenSize = UIScreen.mainScreen().bounds
+        scrollView.contentOffset.x = CGFloat(currentPage) * screenSize.width
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -111,15 +117,15 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
     func loadVisiblePages() {
         // First, determine which page is currently visible
         let screenWidth = UIScreen.mainScreen().bounds.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + screenWidth) / (screenWidth * 2.0)))
+        currentPage = Int(floor((scrollView.contentOffset.x * 2.0 + screenWidth) / (screenWidth * 2.0)))
         
-        println ("Current page \(page)")
+        println ("Current page \(currentPage)")
         // Update the page control
-        pageControl.currentPage = page
+        pageControl.currentPage = currentPage
         
         // Work out which pages you want to load
-        let firstPage = page - 1
-        let lastPage = page + 1
+        let firstPage = currentPage - 1
+        let lastPage = currentPage + 1
         
         // Purge anything before the first page
         for var index = 0; index < firstPage; ++index {

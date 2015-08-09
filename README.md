@@ -2,7 +2,8 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-Reference:
+### Reference ###
+
 * http://www.appcoda.com/sidebar-menu-swift/
 
 ### What is this repository for? ###

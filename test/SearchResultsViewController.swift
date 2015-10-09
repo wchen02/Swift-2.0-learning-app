@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, APIControllerProtocol, UISearchBarDelegate {
     
@@ -15,6 +16,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet var appsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var interstitial: GADInterstitial?
     
     var albums = [Album]()
     
@@ -23,6 +25,12 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        interstitial = DFPInterstitial(adUnitID: "/6499/example/interstitial")
+        var request = DFPRequest()
+        request.testDevices = [ kGADSimulatorID ];
+        interstitial!.loadRequest(request)
+        
         // Do any additional setup after loading the view, typically from a nib.
         api = APIController(delegate: self)
         searchBar.delegate = self
@@ -107,6 +115,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (interstitial!.isReady) {
+            interstitial!.presentFromRootViewController(self)
+        }
         if let detailsViewController: DetailsViewController = segue.destinationViewController as? DetailsViewController {
             var albumIndex = appsTableView!.indexPathForSelectedRow()!.row
             var selectedAlbum = self.albums[albumIndex]

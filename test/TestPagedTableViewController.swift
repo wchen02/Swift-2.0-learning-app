@@ -39,34 +39,34 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         for _ in 0..<pageCount {
             pageViews.append(nil)
         }
-
-        // 4
-        let screenSize = UIScreen.mainScreen().bounds
-        scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageCount),
-            height: scrollView.frame.height)
+        
+        alignSubviews()
+        
         // 5
         loadVisiblePages()
+    }
+    
+    func alignSubviews() {
+        // Position all the content views at their respective page positions
+        let screenSize = UIScreen.mainScreen().bounds
+        scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageLabels.count),
+            height: scrollView.frame.height)
+        
+        println("align subviews height \(scrollView.frame.height)")
+        
+        for var i = 0; i < pageViews.count; ++i {
+            if let view = pageViews[i] {
+                view.frame = CGRectMake(CGFloat(i) * screenSize.width, 0,
+                screenSize.width, scrollView.frame.height);
+            }
+        }
     }
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         let screenSize = UIScreen.mainScreen().bounds
         scrollView.contentOffset.x = CGFloat(currentPage) * screenSize.width
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        println("rotated")
         
-        // update content size to current orientation
-        let screenSize = UIScreen.mainScreen().bounds
-        scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(pageLabels.count),
-            height: scrollView.frame.height)
-        
-        // purge all pages that were created for previous orientation
-        for var index = 0; index < pageViews.count; ++index {
-            purgePage(index)
-        }
-        
-        loadVisiblePages()
+        alignSubviews()
     }
     
     func loadPage(page: Int) {
@@ -83,14 +83,16 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
             // Do nothing. The view is already loaded.
         } else {
             // 2
-            var frame = UIScreen.mainScreen().bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
+            
+            
+            let frame = self.view.frame
+            let barSize : CGFloat = 44.0
+            let theFrame = CGRectMake(frame.origin.x + frame.size.width * CGFloat(page), frame.origin.y, frame.size.width, frame.size.height)
             println("Adding page \(page) at (\(frame.origin.x), \(frame.origin.y))")
             // 3
             var newPageView = UITableView()
             newPageView.contentMode = .ScaleAspectFit
-            newPageView.frame = frame
+            newPageView.frame = theFrame
             newPageView.delegate = self
             newPageView.dataSource = self
             scrollView.addSubview(newPageView)
@@ -153,6 +155,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         for var i = 0; i < pageViews.count; ++i {
             if (tableView == pageViews[i]) {
                 data = pageLabels[i]
+                break
             }
         }
         return data.count
@@ -165,6 +168,7 @@ class TestPagedTableViewController: UIViewController, UIScrollViewDelegate, UITa
         for var i = 0; i < pageViews.count; ++i {
             if (tableView == pageViews[i]) {
                 data = pageLabels[i]
+                break
             }
         }
 

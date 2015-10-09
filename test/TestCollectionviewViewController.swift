@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class TestCollectionviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class TestCollectionviewViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GADBannerViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -16,14 +17,20 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     var tableData: [String] = ["Yu Teng", "Nan", "Wen", "Wensheng", "Chris", "Nadim", "Jon", "Murshed", "Dina"]
     var tableImages: [String] = ["Blank52", "Bookmark_off", "Bookmark_on", "Blank52", "Bookmark_off", "Bookmark_on", "Blank52", "Bookmark_off", "Bookmark_on"]
     var kCellIdentifier = "Cell"
+    var kGoogleAdCellIdentifier = "GoogleAdCell"
+    let adIndex = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        collectionView!.registerNib(UINib(nibName: "TestCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
+        collectionView!.registerNib(UINib(nibName: "GoogleAdCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kGoogleAdCellIdentifier)
         
         var frame = collectionView.bounds
         frame.origin.x = frame.size.width * CGFloat(3)
@@ -34,14 +41,46 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
         newPageView.contentMode = .ScaleAspectFit
         newPageView.frame = frame
         collectionView.addSubview(newPageView)
-
+    }
+    
+    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+        println("Error occured while loading banner ad: " + error.description)
+        
+        if (tableData[adIndex] == "banner ad") {
+            tableData.removeAtIndex(adIndex)
+            tableImages.removeAtIndex(adIndex)
+            let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
+            collectionView.deleteItemsAtIndexPaths([indexPath])
+        }
+    }
+    
+    func adViewDidReceiveAd(bannerView: GADBannerView!) {
+        println("Received banner ad")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        println ("number of items in section: \(tableData.count)")
         return tableData.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if (indexPath.row == adIndex) {
+            if (tableData[adIndex] != "banner ad") {
+                tableData.insert("banner ad", atIndex: adIndex)
+                tableImages.insert("Blank52", atIndex: adIndex)
+                let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
+                collectionView.insertItemsAtIndexPaths([indexPath])
+            }
+            println("getting google ad cell")
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kGoogleAdCellIdentifier, forIndexPath: indexPath) as! GoogleAdCollectionViewCell
+
+            if !cell.isLoaded {
+                cell.setup(self, delegate: self)
+            }
+            
+            return cell
+        }
+    
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TestCollectionViewCell
         cell.title.text = tableData[indexPath.row]
         cell.abstract.text = "This is the abstract of " + tableData[indexPath.row] + ". Please click and you would find nothing happens."
@@ -63,13 +102,15 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
             defaultSize = 200;
         }
         if indexPath.row == 3 {
-            return CGSize(width: defaultSize*2, height: defaultSize)
+            return CGSize(width: 300, height: defaultSize)
+        } else if indexPath.row == adIndex && tableData[adIndex] == "banner ad" {
+            return kGADAdSizeMediumRectangle.size
         }
         return CGSize(width: defaultSize, height: defaultSize)
     }
     
-    /*func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    }*/
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
     
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="46L-ZG-rbv" customClass="TestCollectionViewCell" customModule="test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nv7-q1-90m">
+                        <rect key="frame" x="115" y="8" width="77" height="100"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Abstract" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFQ-hR-Smh">
+                        <rect key="frame" x="8" y="116" width="184" height="76"/>
+                        <color key="backgroundColor" red="0.63137254899999995" green="0.87450980389999999" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZnT-jl-EGs">
+                        <rect key="frame" x="8" y="8" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="uVA-WA-ypn"/>
+                            <constraint firstAttribute="width" secondItem="ZnT-jl-EGs" secondAttribute="height" multiplier="1:1" id="zop-9o-Pmj"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" red="0.63137254899999995" green="0.87450980389999999" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="XFQ-hR-Smh" firstAttribute="leading" secondItem="46L-ZG-rbv" secondAttribute="leadingMargin" id="2Zc-6j-XGu"/>
+                <constraint firstItem="nv7-q1-90m" firstAttribute="top" secondItem="46L-ZG-rbv" secondAttribute="topMargin" id="BIH-wh-otB"/>
+                <constraint firstItem="nv7-q1-90m" firstAttribute="leading" secondItem="ZnT-jl-EGs" secondAttribute="trailing" constant="7" id="DDh-Y1-FxP"/>
+                <constraint firstItem="ZnT-jl-EGs" firstAttribute="top" secondItem="46L-ZG-rbv" secondAttribute="topMargin" id="EHq-hu-byi"/>
+                <constraint firstItem="nv7-q1-90m" firstAttribute="trailing" secondItem="46L-ZG-rbv" secondAttribute="trailingMargin" id="GjA-dA-TeA"/>
+                <constraint firstItem="ZnT-jl-EGs" firstAttribute="leading" secondItem="46L-ZG-rbv" secondAttribute="leadingMargin" id="KyE-1a-mlQ"/>
+                <constraint firstItem="XFQ-hR-Smh" firstAttribute="top" secondItem="ZnT-jl-EGs" secondAttribute="bottom" constant="8" id="YID-tv-JTc"/>
+                <constraint firstItem="XFQ-hR-Smh" firstAttribute="bottom" secondItem="46L-ZG-rbv" secondAttribute="bottomMargin" id="cfy-yq-9MD"/>
+                <constraint firstItem="XFQ-hR-Smh" firstAttribute="top" secondItem="nv7-q1-90m" secondAttribute="bottom" constant="8" id="hDE-os-Lor"/>
+                <constraint firstItem="XFQ-hR-Smh" firstAttribute="trailing" secondItem="46L-ZG-rbv" secondAttribute="trailingMargin" id="jt6-PQ-0PQ"/>
+            </constraints>
+            <connections>
+                <outlet property="abstract" destination="XFQ-hR-Smh" id="23l-E2-sF4"/>
+                <outlet property="image" destination="ZnT-jl-EGs" id="6We-4r-Ja5"/>
+                <outlet property="title" destination="nv7-q1-90m" id="Hda-C0-6K4"/>
+            </connections>
+            <point key="canvasLocation" x="427" y="482"/>
+        </collectionViewCell>
+    </objects>
+</document>

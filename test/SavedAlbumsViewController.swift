@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
-class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, GADBannerViewDelegate {
     
     @IBOutlet weak var savedAlbumsTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var bannerView: DFPBannerView!
     
     let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var albums = [Album]()
@@ -23,12 +25,26 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("Google Mobile Ads SDK version: " + DFPRequest.sdkVersion())
+        bannerView.adSize = kGADAdSizeBanner
+        bannerView.adUnitID = "/6499/example/banner"
+        bannerView.rootViewController = self
+        
+        var request = DFPRequest()
+        request.testDevices = [ kGADSimulatorID ];
+        bannerView.loadRequest(request)
+        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.fetchAlbums()
+    }
+    
+    func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+        println("Error occured while loading banner ad")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

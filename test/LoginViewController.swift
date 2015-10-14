@@ -26,8 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIControllerP
     }
     
     @IBAction func signInButtonPressed(sender: AnyObject) {
-        var username: String = usernameTextField.text
-        var password: String = passwordTextField.text
+        let username: String = usernameTextField.text!
+        let password: String = passwordTextField.text!
         
         if username == "" || password == "" {
             self.showAlert("Sign in Failed!", message: "Please enter Username and Password")
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, APIControllerP
     }
     
     func showAlert(title: String, message: String) {
-        var titlePrompt = UIAlertController(title: title,
+        let titlePrompt = UIAlertController(title: title,
             message: message,
             preferredStyle: .Alert)
         titlePrompt.addAction(UIAlertAction(title: "Ok",

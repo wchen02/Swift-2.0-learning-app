@@ -1,10 +1,13 @@
 PODS:
   - Google-Mobile-Ads-SDK (7.5.1)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - Google-Mobile-Ads-SDK (~> 7.0)
+  - SWRevealViewController (~> 2.3.0)
 
 SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 37315a38a1c6ed738da43a938afb2425099e6759
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

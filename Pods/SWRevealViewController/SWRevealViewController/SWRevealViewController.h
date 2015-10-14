@@ -28,12 +28,8 @@
 
  RELEASE NOTES
  
- Version 2.4.0 (Current Version)
  
-  - Updated behaviour of appearance method calls on child controllers
-  - Removes Xcode 6.3.1 warnings
- 
- Version 2.3.0
+ Version 2.3.0 (Current Version)
  
   - StoryBoard initializing bug fix
   - Minor Code refactoring

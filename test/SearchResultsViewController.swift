@@ -24,10 +24,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var imageCache = [String:UIImage]()
     
     override func viewDidLoad() {
+        print("view did load")
         super.viewDidLoad()
                 
         interstitial = DFPInterstitial(adUnitID: "/6499/example/interstitial")
-        var request = DFPRequest()
+        let request = DFPRequest()
         request.testDevices = [ kGADSimulatorID ];
         interstitial!.loadRequest(request)
         
@@ -53,9 +54,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier)!
         
-        var album: Album = self.albums[indexPath.row]
+        let album: Album = self.albums[indexPath.row]
         
         // Get the formatted price string for display in the subtitle
         cell.detailTextLabel?.text = album.price
@@ -81,7 +82,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
                 if error == nil {
                     // Convert the downloaded data in to a UIImage object
-                    let image = UIImage(data: data)
+                    let image = UIImage(data: data!)
                     // Store the image in to our cache
                     self.imageCache[thumbnailURLString] = image
                     // Update the cell
@@ -92,7 +93,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     })
                 }
                 else {
-                    println("Error: \(error.localizedDescription)")
+                    print("Error: \(error!.localizedDescription)")
                 }
             })
         }
@@ -119,15 +120,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             interstitial!.presentFromRootViewController(self)
         }
         if let detailsViewController: DetailsViewController = segue.destinationViewController as? DetailsViewController {
-            var albumIndex = appsTableView!.indexPathForSelectedRow()!.row
-            var selectedAlbum = self.albums[albumIndex]
+            let albumIndex = appsTableView!.indexPathForSelectedRow!.row
+            let selectedAlbum = self.albums[albumIndex]
             detailsViewController.album = selectedAlbum
         }
     }
     
     //func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.filterContentForSearchText(searchBar.text)
+        self.filterContentForSearchText(searchBar.text!)
     }
 
     
@@ -137,7 +138,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        let scope = searchBar.scopeButtonTitles as! [String]
+        let scope = searchBar.scopeButtonTitles as [String]!
         api.searchItunesFor(scope[selectedScope])
     }
 }

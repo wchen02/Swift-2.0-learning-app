@@ -44,7 +44,7 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     }
     
     func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
-        println("Error occured while loading banner ad: " + error.description)
+        print("Error occured while loading banner ad: " + error.description)
         
         if (tableData[adIndex] == "banner ad") {
             tableData.removeAtIndex(adIndex)
@@ -55,11 +55,11 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     }
     
     func adViewDidReceiveAd(bannerView: GADBannerView!) {
-        println("Received banner ad")
+        print("Received banner ad")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println ("number of items in section: \(tableData.count)")
+        print ("number of items in section: \(tableData.count)")
         return tableData.count
     }
     
@@ -71,7 +71,7 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
                 let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
                 collectionView.insertItemsAtIndexPaths([indexPath])
             }
-            println("getting google ad cell")
+            print("getting google ad cell")
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kGoogleAdCellIdentifier, forIndexPath: indexPath) as! GoogleAdCollectionViewCell
 
             if !cell.isLoaded {
@@ -90,7 +90,7 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("Cell \(indexPath.row) selected")
+        print("Cell \(indexPath.row) selected")
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

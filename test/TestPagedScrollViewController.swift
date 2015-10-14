@@ -53,14 +53,14 @@ class TestPagedScrollViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadPage(page: Int) {
-        println("loading page \(page)")
+        print("loading page \(page)")
         if page < 0 || page >= pageImages.count {
             // If it's outside the range of what you have to display, then do nothing
             return
         }
         
         // 1
-        if let pageView = pageViews[page] {
+        if pageViews[page] != nil {
             // Do nothing. The view is already loaded.
         } else {
             // 2

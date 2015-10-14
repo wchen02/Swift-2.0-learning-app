@@ -48,9 +48,10 @@ class Album: NSManagedObject {
         newItem.artistURL = self.artistURL
         newItem.collectionId = self.collectionId
         
-        var error : NSError?
-        if(!moc.save(&error) ) {
-            println(error?.localizedDescription)
+        do {
+            try moc.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
     }
     
@@ -58,9 +59,10 @@ class Album: NSManagedObject {
         let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         managedObjectContext.deleteObject(self)
         
-        var error : NSError?
-        if(!managedObjectContext.save(&error) ) {
-            println(error?.localizedDescription)
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
     }
     
@@ -74,7 +76,7 @@ class Album: NSManagedObject {
             // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
             for result in results {
                 
-                var name = result["trackName"] as? String ?? result["collectionName"] as? String
+                let name = result["trackName"] as? String ?? result["collectionName"] as? String
                 /*if name == nil {
                 name = result["collectionName"] as? String
                 }*/
@@ -84,8 +86,8 @@ class Album: NSManagedObject {
                 if price == nil {
                     price = result["collectionPrice"] as? String
                     if price == nil {
-                        var priceFloat: Float? = result["collectionPrice"] as? Float
-                        var nf: NSNumberFormatter = NSNumberFormatter()
+                        let priceFloat: Float? = result["collectionPrice"] as? Float
+                        let nf: NSNumberFormatter = NSNumberFormatter()
                         nf.maximumFractionDigits = 2
                         if priceFloat != nil {
                             price = "$\(nf.stringFromNumber(priceFloat!)!)"
@@ -105,7 +107,7 @@ class Album: NSManagedObject {
                 }
                 
                 if let collectionId = result["collectionId"] as? Int {
-                    var newAlbum = Album(name: name!,
+                    let newAlbum = Album(name: name!,
                         price: price!,
                         thumbnailImageURL: thumbnailURL,
                         largeImageURL: imageURL,

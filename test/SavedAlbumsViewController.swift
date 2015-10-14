@@ -26,12 +26,12 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("Google Mobile Ads SDK version: " + DFPRequest.sdkVersion())
+        print("Google Mobile Ads SDK version: " + DFPRequest.sdkVersion())
         bannerView.adSize = kGADAdSizeBanner
         bannerView.adUnitID = "/6499/example/banner"
         bannerView.rootViewController = self
         
-        var request = DFPRequest()
+        let request = DFPRequest()
         request.testDevices = [ kGADSimulatorID ];
         bannerView.loadRequest(request)
         
@@ -44,7 +44,7 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
-        println("Error occured while loading banner ad")
+        print("Error occured while loading banner ad")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +55,7 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier)!
         
         var album: Album
         //album = self.albums[indexPath.row]
@@ -82,16 +82,19 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        var errorPointer : NSErrorPointer = nil
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: errorPointer) as? [Album] {
-            albums = fetchResults
+        do {
+            if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Album] {
+                albums = fetchResults
+            }
+        } catch _ as NSError {
+            
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let detailsViewController: DetailsViewController = segue.destinationViewController as? DetailsViewController {
-            var albumIndex = savedAlbumsTableView!.indexPathForSelectedRow()!.row
-            var selectedAlbum = self.albums[albumIndex]
+            let albumIndex = savedAlbumsTableView!.indexPathForSelectedRow!.row
+            let selectedAlbum = self.albums[albumIndex]
             detailsViewController.album = selectedAlbum
         }
     }
@@ -110,7 +113,7 @@ class SavedAlbumsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.filterContentForSearchText(searchBar.text)
+        self.filterContentForSearchText(searchBar.text!)
         if(self.filteredAlbums.count == 0){
             self.searchActive = false;
         } else {

@@ -25,11 +25,11 @@ struct Track {
             // Create the track
             if let kind = trackInfo["kind"] as? String {
                 if kind=="song" {
-                    var trackPrice = trackInfo["trackPrice"] as? String ?? "?"
-                    var trackTitle = trackInfo["trackName"] as? String ?? "Unknown"
-                    var trackPreviewUrl = trackInfo["previewUrl"] as? String ?? ""
+                    let trackPrice = trackInfo["trackPrice"] as? String ?? "?"
+                    let trackTitle = trackInfo["trackName"] as? String ?? "Unknown"
+                    let trackPreviewUrl = trackInfo["previewUrl"] as? String ?? ""
                     
-                    var track = Track(title: trackTitle, price: trackPrice, previewUrl: trackPreviewUrl)
+                    let track = Track(title: trackTitle, price: trackPrice, previewUrl: trackPreviewUrl)
                     tracks.append(track)
                 }
             }

@@ -26,7 +26,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     var lastPlayIndexPath : NSIndexPath?
     let managedObjectContext: NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -63,7 +63,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var track = tracks[indexPath.row]
+        let track = tracks[indexPath.row]
         
         mediaPlayer.contentURL = NSURL(string: track.previewUrl)
         if lastPlayIndexPath != nil {
@@ -111,7 +111,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
         let predicate = NSPredicate(format: "collectionId == %i", Int(album!.collectionId))
         fetchRequest.predicate = predicate
         
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [Album] {
+        if let fetchResults = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [Album] {
             saveButton.enabled = fetchResults.count == 0 ? true : false
         }
 

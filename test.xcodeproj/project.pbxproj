@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B203C8C1B1FC6F500963D77 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B203C8B1B1FC6F500963D77 /* SWRevealViewController.m */; };
 		3B203C8E1B1FC8AB00963D77 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B203C8D1B1FC8AB00963D77 /* MenuViewController.swift */; };
 		3B27631F1B27958A00A57DF6 /* SavedAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B27631E1B27958A00A57DF6 /* SavedAlbumsViewController.swift */; };
 		3B2763221B27983B00A57DF6 /* test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B2763201B27983A00A57DF6 /* test.xcdatamodeld */; };
@@ -34,7 +33,6 @@
 		98B889651BB982E4007BFC95 /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B889641BB982E4007BFC95 /* TestCollectionViewCell.xib */; };
 		98F1AD061B506D3E0020335F /* TestPagedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */; };
 		98FEC62D1B599160005F573F /* TestPagedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */; };
-		98FEC62F1B5D7D2C005F573F /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FEC62E1B5D7D2C005F573F /* iAd.framework */; };
 		98FEC6311B5EC77C005F573F /* TestPagedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FEC6301B5EC77C005F573F /* TestPagedCollectionViewController.swift */; };
 		D1661A244B1143A2FE2D24A3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03E007A2D765CFB573D267E6 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -51,9 +49,6 @@
 
 /* Begin PBXFileReference section */
 		03E007A2D765CFB573D267E6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B203C891B1FC6F400963D77 /* test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "test-Bridging-Header.h"; sourceTree = "<group>"; };
-		3B203C8A1B1FC6F500963D77 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		3B203C8B1B1FC6F500963D77 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		3B203C8D1B1FC8AB00963D77 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3B27631E1B27958A00A57DF6 /* SavedAlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedAlbumsViewController.swift; sourceTree = "<group>"; };
 		3B2763211B27983B00A57DF6 /* test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = test.xcdatamodel; sourceTree = "<group>"; };
@@ -81,12 +76,12 @@
 		3BECBF4C1B4305EB00475885 /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		54666DC9BD4B10983D7DF600 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6FCCE750E87C9005CF3AAC75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		98331A691BCDAEC20055FA32 /* test-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-Bridging-Header.h"; sourceTree = "<group>"; };
 		988F99131BC71AAA00043EAB /* GoogleAdCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleAdCollectionViewCell.xib; sourceTree = "<group>"; };
 		988F99151BC71B8D00043EAB /* GoogleAdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAdCollectionViewCell.swift; path = ../GoogleAdCollectionViewCell.swift; sourceTree = "<group>"; };
 		98B889641BB982E4007BFC95 /* TestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCollectionViewCell.xib; sourceTree = "<group>"; };
 		98F1AD051B506D3E0020335F /* TestPagedScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedScrollViewController.swift; sourceTree = "<group>"; };
 		98FEC62C1B599160005F573F /* TestPagedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedTableViewController.swift; sourceTree = "<group>"; };
-		98FEC62E1B5D7D2C005F573F /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		98FEC6301B5EC77C005F573F /* TestPagedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPagedCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98FEC62F1B5D7D2C005F573F /* iAd.framework in Frameworks */,
 				D1661A244B1143A2FE2D24A3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,20 +113,9 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3B203C881B1FC6CA00963D77 /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3B203C8A1B1FC6F500963D77 /* SWRevealViewController.h */,
-				3B203C8B1B1FC6F500963D77 /* SWRevealViewController.m */,
-				3B203C891B1FC6F400963D77 /* test-Bridging-Header.h */,
-			);
-			name = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		3B3DD4B31B05163500AD219C = {
 			isa = PBXGroup;
 			children = (
-				98FEC62E1B5D7D2C005F573F /* iAd.framework */,
 				3B3DD4BE1B05163500AD219C /* test */,
 				3B3DD4D41B05163500AD219C /* testTests */,
 				3B3DD4BD1B05163500AD219C /* Products */,
@@ -178,8 +161,8 @@
 				3B3DD4C51B05163500AD219C /* Main.storyboard */,
 				3BECBF431B41E48D00475885 /* styles */,
 				3B3DD4BF1B05163500AD219C /* Supporting Files */,
-				3B203C881B1FC6CA00963D77 /* SWRevealViewController */,
 				3B2763201B27983A00A57DF6 /* test.xcdatamodeld */,
+				98331A691BCDAEC20055FA32 /* test-Bridging-Header.h */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -238,6 +221,7 @@
 				3B3DD4B91B05163500AD219C /* Frameworks */,
 				3B3DD4BA1B05163500AD219C /* Resources */,
 				5435E35C4562876185DDDE1F /* Copy Pods Resources */,
+				139C291BB963D54DD369FD2E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,7 +256,9 @@
 		3B3DD4B41B05163500AD219C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = nluo;
 				TargetAttributes = {
 					3B3DD4BB1B05163500AD219C = {
@@ -329,6 +315,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		139C291BB963D54DD369FD2E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5435E35C4562876185DDDE1F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,7 +374,6 @@
 				3B3DD4C41B05163500AD219C /* SearchResultsViewController.swift in Sources */,
 				3B3DD4C21B05163500AD219C /* AppDelegate.swift in Sources */,
 				3B4D1D921B0BEE9900779970 /* APIController.swift in Sources */,
-				3B203C8C1B1FC6F500963D77 /* SWRevealViewController.m in Sources */,
 				3B203C8E1B1FC8AB00963D77 /* MenuViewController.swift in Sources */,
 				98FEC62D1B599160005F573F /* TestPagedTableViewController.swift in Sources */,
 				3B4D1D961B0E91D700779970 /* Album.swift in Sources */,
@@ -447,6 +447,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -461,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -498,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -515,11 +516,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = test/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "whatever.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "test/test-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "test/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -533,11 +536,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = test/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "whatever.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "test/test-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "test/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 			};
 			name = Release;
 		};
@@ -555,6 +560,7 @@
 				);
 				INFOPLIST_FILE = testTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "whatever.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/test.app/test";
 			};
@@ -570,6 +576,7 @@
 				);
 				INFOPLIST_FILE = testTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "whatever.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/test.app/test";
 			};
@@ -585,7 +592,7 @@
 				3B3DD4DA1B05163500AD219C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		3B3DD4DB1B05163500AD219C /* Build configuration list for PBXNativeTarget "test" */ = {
 			isa = XCConfigurationList;
@@ -594,7 +601,7 @@
 				3B3DD4DD1B05163500AD219C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		3B3DD4DE1B05163500AD219C /* Build configuration list for PBXNativeTarget "testTests" */ = {
 			isa = XCConfigurationList;
@@ -603,7 +610,7 @@
 				3B3DD4E01B05163500AD219C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

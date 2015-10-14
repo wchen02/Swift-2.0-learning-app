@@ -29,7 +29,7 @@ class TestWebviewViewController: UIViewController {
         //let request = NSURLRequest(URL: requestURL!)
         //webview.loadRequest(request)
         
-        var myHTMLString:String =
+        let myHTMLString:String =
             "<head>" +
             "<link rel='stylesheet' href='main.css' type='text/css'>" +
             "<script src='main.js'></script>" +

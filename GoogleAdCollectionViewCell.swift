@@ -17,20 +17,22 @@ class GoogleAdCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        println("GoogleAdCollectionViewCell init: Google Mobile Ads SDK version: " + DFPRequest.sdkVersion())
+        print("GoogleAdCollectionViewCell init: Google Mobile Ads SDK version: " + DFPRequest.sdkVersion())
     }
     
     func setup(rootViewController: UIViewController, delegate: GADBannerViewDelegate) {
-        println("GoogleAdCollectionViewCell setup")
+        print("GoogleAdCollectionViewCell setup")
         bannerView.adUnitID = "/6499/example/banner"
         bannerView.rootViewController = rootViewController
         bannerView.delegate = delegate
         
-        var request = DFPRequest()
-        request.testDevices = [ kGADSimulatorID ];
+        let request = DFPRequest()
+
+        // Test device IDs
+        request.testDevices = [ kGADSimulatorID, "889d307717479b035cfa484fc30e2119" ];
         bannerView.loadRequest(request)
         isLoaded = true
     }

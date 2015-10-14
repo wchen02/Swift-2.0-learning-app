@@ -54,7 +54,7 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
         scrollView.contentSize = CGSize(width: screenSize.width * CGFloat(tableData.count),
             height: scrollView.frame.height)
         
-        println("align subviews height \(scrollView.frame.height)")
+        print("align subviews height \(scrollView.frame.height)")
         
         for var i = 0; i < pageViews.count; ++i {
             if let view = pageViews[i] {
@@ -74,14 +74,14 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
     func loadPage(page: Int) {
         if page < 0 || page >= tableData.count {
             // If it's outside the range of what you have to display, then do nothing
-            println("Skip page \(page)")
+            print("Skip page \(page)")
             return
         }
-        println("Load page \(page)")
+        print("Load page \(page)")
         
         // 1
-        if let pageView = pageViews[page] {
-            println("View is already loaded")
+        if (pageViews[page] != nil) {
+            print("View is already loaded")
             // Do nothing. The view is already loaded.
         } else {
             // 2
@@ -89,9 +89,9 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
                 //UIScreen.mainScreen().bounds.width, scrollView.frame.height);
             let frame = self.view.frame
             let theFrame = CGRectMake(frame.origin.x + frame.size.width * CGFloat(page), frame.origin.y, frame.size.width, frame.size.height - 120)
-            println("Adding page \(page) at (\(frame.origin.x), \(frame.origin.y))")
+            print("Adding page \(page) at (\(frame.origin.x), \(frame.origin.y))")
             // 3
-            var newPageView = UICollectionView(frame: theFrame, collectionViewLayout: UICollectionViewFlowLayout())
+            let newPageView = UICollectionView(frame: theFrame, collectionViewLayout: UICollectionViewFlowLayout())
             newPageView.contentMode = .ScaleAspectFit
             newPageView.delegate = self
             newPageView.dataSource = self
@@ -110,7 +110,7 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
         
         // Remove a page from the scroll view and reset the container array
         if let pageView = pageViews[page] {
-            println("Purge page \(page)")
+            print("Purge page \(page)")
             pageView.removeFromSuperview()
             pageViews[page] = nil
         }
@@ -121,7 +121,7 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
         let screenWidth = UIScreen.mainScreen().bounds.width
         currentPage = Int(floor((scrollView.contentOffset.x * 2.0 + screenWidth) / (screenWidth * 2.0)))
         
-        println ("Current page \(currentPage)")
+        print ("Current page \(currentPage)")
         // Update the page control
         pageControl.currentPage = currentPage
         
@@ -174,7 +174,7 @@ class TestPagedCollectionViewController: UIViewController, UIScrollViewDelegate,
         collectionView.registerNib(UINib(nibName: "TestCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
 
 
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TestCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as! TestCollectionViewCell
         cell.title.text = tableData[page][indexPath.row]
         cell.abstract.text = "This is the abstract of " + tableData[page][indexPath.row] + ". Please click and you would find nothing happens."
         cell.image.image = UIImage(named: tableImages[indexPath.row])

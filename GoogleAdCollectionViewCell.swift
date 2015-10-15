@@ -32,7 +32,11 @@ class GoogleAdCollectionViewCell: UICollectionViewCell {
         let request = DFPRequest()
 
         // Test device IDs
-        request.testDevices = [ kGADSimulatorID, "889d307717479b035cfa484fc30e2119" ];
+        request.testDevices = [
+            kGADSimulatorID, // simulator
+            "889d307717479b035cfa484fc30e2119", // ipad
+            "259e25d88b78c7f0eec17af92c2499ef" // wensheng's iphone
+        ];
         bannerView.loadRequest(request)
         isLoaded = true
     }

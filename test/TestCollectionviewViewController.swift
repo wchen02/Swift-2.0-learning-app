@@ -19,6 +19,7 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     var kCellIdentifier = "Cell"
     var kGoogleAdCellIdentifier = "GoogleAdCell"
     let adIndex = 5
+    var loadAd = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +47,15 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     func adView(bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         print("Error occured while loading banner ad: " + error.description)
         
-        if (tableData[adIndex] == "banner ad") {
-            tableData.removeAtIndex(adIndex)
-            tableImages.removeAtIndex(adIndex)
-            let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
-            collectionView.deleteItemsAtIndexPaths([indexPath])
-        }
+        collectionView.performBatchUpdates(nil, completion: {(Bool) -> Void in
+            if (self.tableData[self.adIndex] == "banner ad") {
+                self.loadAd = false
+                let indexPath = NSIndexPath(forRow: self.adIndex, inSection: 0)
+                self.tableData.removeAtIndex(indexPath.item)
+                self.tableImages.removeAtIndex(indexPath.item)
+                self.collectionView.deleteItemsAtIndexPaths([indexPath])
+            }
+        })
     }
     
     func adViewDidReceiveAd(bannerView: GADBannerView!) {
@@ -64,16 +68,17 @@ class TestCollectionviewViewController: UIViewController, UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if (indexPath.row == adIndex) {
-            if (tableData[adIndex] != "banner ad") {
-                tableData.insert("banner ad", atIndex: adIndex)
-                tableImages.insert("Blank52", atIndex: adIndex)
-                let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
-                collectionView.insertItemsAtIndexPaths([indexPath])
-            }
-            print("getting google ad cell")
+        if (indexPath.row == adIndex && tableData[adIndex] != "banner ad" && loadAd) {
+            print("inserting google ad cell")
+            tableData.insert("banner ad", atIndex: adIndex)
+            tableImages.insert("Blank52", atIndex: adIndex)
+            let indexPath = NSIndexPath(forRow: adIndex, inSection: 0)
+            collectionView.insertItemsAtIndexPaths([indexPath])
+        }
+        
+        if indexPath.row == adIndex && loadAd {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kGoogleAdCellIdentifier, forIndexPath: indexPath) as! GoogleAdCollectionViewCell
-
+            
             if !cell.isLoaded {
                 cell.setup(self, delegate: self)
             }

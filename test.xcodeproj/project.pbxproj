@@ -23,7 +23,7 @@
 		3B4D1D981B0E9B5000779970 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1D971B0E9B5000779970 /* DetailsViewController.swift */; };
 		3B4D1DCC1B0FE81F00779970 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1DCB1B0FE81F00779970 /* Track.swift */; };
 		3B4D1DCE1B0FF04900779970 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D1DCD1B0FF04900779970 /* TrackCell.swift */; };
-		3B82DB9E1BD1988100F0ECC3 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B82DB9D1BD1988100F0ECC3 /* AirshipConfig.plist */; settings = {ASSET_TAGS = (); }; };
+		3B6AAD471BD1A30300E8BC03 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B6AAD461BD1A30300E8BC03 /* AirshipConfig.plist */; settings = {ASSET_TAGS = (); }; };
 		3BECBF421B41D76F00475885 /* TestWebviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */; };
 		3BECBF471B41E57000475885 /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = 3BECBF461B41E57000475885 /* main.css */; };
 		3BECBF491B42ED6F00475885 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 3BECBF481B42ED6F00475885 /* main.js */; };
@@ -70,7 +70,7 @@
 		3B4D1D971B0E9B5000779970 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3B4D1DCB1B0FE81F00779970 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		3B4D1DCD1B0FF04900779970 /* TrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "\U0010TrackCell.swift"; sourceTree = "<group>"; };
-		3B82DB9D1BD1988100F0ECC3 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AirshipConfig.plist; path = ../../../Downloads/AirshipConfig.plist; sourceTree = "<group>"; };
+		3B6AAD461BD1A30300E8BC03 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
 		3BECBF411B41D76F00475885 /* TestWebviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWebviewViewController.swift; sourceTree = "<group>"; };
 		3BECBF461B41E57000475885 /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
 		3BECBF481B42ED6F00475885 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		3B3DD4BF1B05163500AD219C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3B82DB9D1BD1988100F0ECC3 /* AirshipConfig.plist */,
+				3B6AAD461BD1A30300E8BC03 /* AirshipConfig.plist */,
 				3B3DD4C01B05163500AD219C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -309,7 +309,7 @@
 				3BECBF491B42ED6F00475885 /* main.js in Resources */,
 				3B3DD4C71B05163500AD219C /* Main.storyboard in Resources */,
 				98B889651BB982E4007BFC95 /* TestCollectionViewCell.xib in Resources */,
-				3B82DB9E1BD1988100F0ECC3 /* AirshipConfig.plist in Resources */,
+				3B6AAD471BD1A30300E8BC03 /* AirshipConfig.plist in Resources */,
 				3BECBF471B41E57000475885 /* main.css in Resources */,
 				3B3DD4CC1B05163500AD219C /* LaunchScreen.xib in Resources */,
 				3B3DD4C91B05163500AD219C /* Images.xcassets in Resources */,

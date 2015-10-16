@@ -18,9 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         print("Hello World")
-        let notificationTypes:UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        
+        let config: UAConfig = UAConfig.defaultConfig()
+        UAirship.takeOff(config)
+        let something: UAPush = UAirship.push()
+        var channelId: String? = something.channelID
+        //print("My Application Channel ID: " + channelId)
+        UAirship.push().userNotificationTypes = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        UAirship.push().userPushNotificationsEnabled = true
+        UIApplication.sharedApplication().openURL(NSURL(fileURLWithPath: UIApplicationOpenSettingsURLString))
+
+        
+        
+        /*let notificationTypes:UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let notificationSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)*/
         return true
     }
 

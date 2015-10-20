@@ -49,7 +49,9 @@ http://codewithchris.com/iad-tutorial/
 https://developers.google.com/mobile-ads-sdk/docs/dfp/ios/quick-start
 
 ### Installing CocoaPods on Mac OS X El Capitan ###
+```bash
 sudo gem install -n /usr/local/bin cocoapods
+```
 https://github.com/CocoaPods/CocoaPods/issues/3736#issuecomment-145200290
 
 ### Networking ###

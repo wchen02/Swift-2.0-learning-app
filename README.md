@@ -69,7 +69,7 @@ xcodebuild -list [-project name.xcodeproj | -workspace name.xcworkspace]
 xcodebuild -workspace MyiOSApp.xcworkspace -scheme MyiOSApp -configuration Debug -sdk iphoneos
  
 # package that .app file into a .ipa
-/usr/bin/xcrun -sdk iphoneos PackageApplication -v"${RELEASE_BUILDDIR}/${APPLICATION_NAME}.app" -o"${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${CODE_SIGNING_CERTIFICATE}" --embed "${PROVISONING_PROFILE}”
+/usr/bin/xcrun -sdk iphoneos PackageApplication -v"${RELEASE_BUILDDIR}/${APPLICATION_NAME}.app" -o"${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${CODE_SIGNING_IDENTITY}" --embed "${PROVISONING_PROFILE}”
  
 # Example: code sign and provisioning profile is ommited below because xcode picks them up from the workspace
 xcrun -sdk iphoneos PackageApplication -v "~/Library/Developer/Xcode/DerivedData/MyiOSApp-aybxjqitpyptdsgiapjtalbiajvd/Build/Products/Debug-iphoneos/MyiOSApp.app" -o ~/Desktop/MyiOSApp.ipa

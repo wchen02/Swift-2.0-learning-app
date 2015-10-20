@@ -56,5 +56,22 @@ https://github.com/CocoaPods/CocoaPods/issues/3736#issuecomment-145200290
 http://www.raywenderlich.com/85080/beginning-alamofire-tutorial
 https://github.com/Alamofire/Alamofire
 
+### How to build workspace/project into .ipa from command line
+```bash
+cd ~/Desktop/MyiOSApp/
+ 
+# list out information about the workspace
+xcodebuild -list [-project name.xcodeproj | -workspace name.xcworkspace]
+ 
+# this command will build a .app file
+xcodebuild -workspace MyiOSApp.xcworkspace -scheme MyiOSApp -configuration Debug -sdk iphoneos
+ 
+# package that .app file into a .ipa
+/usr/bin/xcrun -sdk iphoneos PackageApplication -v"${RELEASE_BUILDDIR}/${APPLICATION_NAME}.app" -o"${BUILD_HISTORY_DIR}/${APPLICATION_NAME}.ipa" --sign "${CODE_SIGNING_CERTIFICATE}" --embed "${PROVISONING_PROFILE}”
+ 
+# Example: code sign and provisioning profile is ommited below because xcode picks them up from the workspace
+xcrun -sdk iphoneos PackageApplication -v "~/Library/Developer/Xcode/DerivedData/MyiOSApp-aybxjqitpyptdsgiapjtalbiajvd/Build/Products/Debug-iphoneos/MyiOSApp.app" -o ~/Desktop/MyiOSApp.ipa
+```
+
 ### Notification
 http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1

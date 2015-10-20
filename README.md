@@ -77,3 +77,42 @@ xcrun -sdk iphoneos PackageApplication -v "~/Library/Developer/Xcode/DerivedData
 
 ### Notification
 http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1
+
+### App Configuration File
+
+#### Create .plist configuration file
+Create new file ->iOS Resource -> Property List
+
+#### Read Config
+```
+var myDict: NSDictionary?
+if let path = NSBundle.mainBundle().pathForResource("AppConfig", ofType: "plist") {
+    myDict = NSDictionary(contentsOfFile: path)
+}
+ 
+if let dict = myDict {
+    usernameTextField.placeholder = dict["Placeholder"] as? String
+}
+```
+
+### Create multiple app with same source codebase
+If you find yourself in the position where having multiple targets in your iOS project would be useful: for instance you wish to make a production, staging and demo target with separate endpoints, then this guide should prove useful.
+
+1. Start by opening your project in xCode 6 and clicking on your project header to display the existing targets.
+2. Duplicate an existing target (preferably the original) and rename it (e.g "app_name production")
+3. Navigate to this target, then build settings > packaging> product name. You will see "app_name copy". Change this to
+```
+${TARGET_NAME}
+```
+4. Right click on any folder in your project and go to Finder. make a new folder inside the project structure with a similar name to your target (e.g production)
+5. Copy the config file, info.plist file and any other files you wish to be unique to this target into the folder
+6. Drag this folder into your project in xCode to add it to the project bundle.
+7. Click on the new info.plist file and make sure that no target membership is ticked in the right sidebar.
+8. Delete the generated info.plist file that appeared (usually the last file in your project navigator)
+9. Go into your target > general and specify an info.plist. This should be the one in your new target folder.
+10. Click on your target in the top bar and from the dropdown select "manage scheme".
+11. Remove the copy scheme by highlighting and selecting "-" at the bottom of the panel
+12. Click on the "autocreate scheme" button
+You should now have a separate target with unique files that will be used when this target is selected. Feel free to modify things like endpoints, authentication details, etc...
+
+Ref: https://pugpig.zendesk.com/hc/en-us/articles/204412465-Adding-new-targets-to-xCode-6-projects

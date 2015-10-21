@@ -21,11 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let config: UAConfig = UAConfig.defaultConfig()
         UAirship.takeOff(config)
-        let something: UAPush = UAirship.push()
-        var channelId: String? = something.channelID
-        //print("My Application Channel ID: " + channelId)
         UAirship.push().userNotificationTypes = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         UAirship.push().userPushNotificationsEnabled = true
+        UAirship.push().tags = ["stupid"]
         UIApplication.sharedApplication().openURL(NSURL(fileURLWithPath: UIApplicationOpenSettingsURLString))
 
         
@@ -136,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     // notification
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+    /*func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
@@ -145,6 +143,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to get token, error: %@", error)
-    }
+    }*/
 }
 

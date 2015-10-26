@@ -54,6 +54,13 @@ sudo gem install -n /usr/local/bin cocoapods
 ```
 https://github.com/CocoaPods/CocoaPods/issues/3736#issuecomment-145200290
 
+### Configuring Workspace to use CocoaPods for test
+Open Podfile and add the following line: (replace MainTarget and MainTargetTests with your targets)
+```
+link_with 'MainTarget', 'MainTargetTests'
+```
+Then run pod install.
+
 ### Networking ###
 http://www.raywenderlich.com/85080/beginning-alamofire-tutorial
 https://github.com/Alamofire/Alamofire
@@ -61,7 +68,6 @@ https://github.com/Alamofire/Alamofire
 ### How to build workspace/project into .ipa from command line
 ```bash
 cd ~/Desktop/MyiOSApp/
- 
 # list out information about the workspace
 xcodebuild -list [-project name.xcodeproj | -workspace name.xcworkspace]
  

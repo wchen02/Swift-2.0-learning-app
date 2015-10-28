@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("Hello World")
         
+        /*PushNotificationManager.pushManager().delegate = self
+        PushNotificationManager.pushManager().handlePushReceived(launchOptions)
+        PushNotificationManager.pushManager().sendAppOpen()
+        PushNotificationManager.pushManager().setTags(["stupid": "stupid"])
+        PushNotificationManager.pushManager().registerForPushNotifications()*/
+        
         let config: UAConfig = UAConfig.defaultConfig()
         UAirship.takeOff(config)
         UAirship.push().userNotificationTypes = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
@@ -134,6 +140,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     // notification
+    /*func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        PushNotificationManager.pushManager().handlePushRegistration(deviceToken)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        PushNotificationManager.pushManager().handlePushRegistrationFailure(error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PushNotificationManager.pushManager().handlePushReceived(userInfo)
+    }*/
     /*func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
